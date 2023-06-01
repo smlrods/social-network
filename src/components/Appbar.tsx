@@ -10,9 +10,13 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import { Avatar, ListItemIcon, Tooltip } from '@mui/material';
 import { Logout } from '@mui/icons-material';
+import { UserProps } from '../App';
+import { useNavigate } from 'react-router-dom';
+import api from '../api';
 
-export default function PrimarySearchAppBar() {
+export default function Appbar({ user }: { user: UserProps | unknown | null }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -23,6 +27,12 @@ export default function PrimarySearchAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = async () => {
+    handleMenuClose();
+    await api.auth.logout();
+    navigate(0);
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -61,13 +71,16 @@ export default function PrimarySearchAppBar() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={() => {
+        handleMenuClose();
+        navigate('/profile');
+      }}>
         <ListItemIcon>
           <AccountCircleOutlinedIcon fontSize='small' /> 
         </ListItemIcon>
         Profile
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
+      <MenuItem onClick={handleLogout}>
         <ListItemIcon>
           <Logout fontSize='small' />
         </ListItemIcon>
@@ -99,19 +112,21 @@ export default function PrimarySearchAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
-            <Tooltip title='Account settings'>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <Avatar alt='Profile Image' src='https://e1.pxfuel.com/desktop-wallpaper/170/208/desktop-wallpaper-anime-profile-anime-girl-profile.jpg' />
-              </IconButton>
-            </Tooltip>
+            { user ?
+              <Tooltip title='Account settings'>
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <Avatar alt='Profile Image' src={user.profile_image} />
+                </IconButton>
+              </Tooltip>
+            : null }
           </Box>
         </Toolbar>
       </AppBar>
