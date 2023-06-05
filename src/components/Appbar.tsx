@@ -43,40 +43,40 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
       PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 30,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
+        elevation: 0,
+        sx: {
+          overflow: 'visible',
+          filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+          mt: 1.5,
+          '& .MuiAvatar-root': {
+            width: 32,
+            height: 32,
+            ml: -0.5,
+            mr: 1,
           },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
+          '&:before': {
+            content: '""',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            right: 30,
+            width: 10,
+            height: 10,
+            bgcolor: 'background.paper',
+            transform: 'translateY(-50%) rotate(45deg)',
+            zIndex: 0,
+          },
+        },
+      }}
+      transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+      anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+    >
       <MenuItem onClick={() => {
         handleMenuClose();
-        navigate('/profile');
+        navigate(`/profile/${user._id}`);
       }}>
         <ListItemIcon>
-          <AccountCircleOutlinedIcon fontSize='small' /> 
+          <AccountCircleOutlinedIcon fontSize='small' />
         </ListItemIcon>
         Profile
       </MenuItem>
@@ -99,7 +99,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
             noWrap
             component="a"
             href="/"
-            sx={{ 
+            sx={{
               display: { xs: 'none', sm: 'block', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -112,7 +112,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
-            { user ?
+            {user ?
               <Tooltip title='Account settings'>
                 <IconButton
                   size="large"
@@ -126,7 +126,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
                   <Avatar alt='Profile Image' src={user.profile_image} />
                 </IconButton>
               </Tooltip>
-            : null }
+              : null}
           </Box>
         </Toolbar>
       </AppBar>
