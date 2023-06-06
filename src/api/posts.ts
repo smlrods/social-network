@@ -9,7 +9,7 @@ const getPosts = async (lastDoc?: string) => {
   return data;
 }
 
-const createPost = async (post: { body: string }) => {
+const createPost = async (post: { body: string, image?: string }) => {
   const { data } = await axiosInstance.post('/posts', post);
   return data;
 }
@@ -41,7 +41,7 @@ const getComments = async (postid: string, lastDoc?: string) => {
 const createComment = async (postid: string, comment: { body: string }) => {
   const { data } = await axiosInstance.post(`/posts/${postid}/comments`, comment);
   return data;
-} 
+}
 
 const getLikes = async (postid: string) => {
   const { data } = await axiosInstance.get(`/posts/${postid}/likes`);
