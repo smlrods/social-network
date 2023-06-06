@@ -9,8 +9,12 @@ const getFriends = async (lastDoc?: string) => {
   return data;
 }
 
-const getPosts = async () => {
-  const { data } = await axiosInstance.get('/friends/posts');
+const getPosts = async (lastDoc?: string) => {
+  const { data } = await axiosInstance.get('/friends/posts', {
+    params: {
+      ...(lastDoc && { lastDoc })
+    }
+  });
   return data;
 }
 
