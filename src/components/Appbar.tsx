@@ -98,7 +98,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               display: { xs: 'none', sm: 'block', md: 'flex' },
               fontFamily: 'monospace',
