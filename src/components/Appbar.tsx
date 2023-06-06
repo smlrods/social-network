@@ -13,6 +13,7 @@ import { Logout } from '@mui/icons-material';
 import { UserProps } from '../App';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
+import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
 
 export default function Appbar({ user }: { user: UserProps | unknown | null }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -110,6 +111,11 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
           >
             Social Network
           </Typography>
+          <Tooltip title='Find Users'>
+            <IconButton onClick={() => navigate('/users')} sx={{ marginLeft: 1 }}>
+              <PersonSearchOutlinedIcon sx={{ color: 'white' }} />
+            </IconButton>
+          </Tooltip>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             {user ?
