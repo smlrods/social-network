@@ -91,7 +91,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <PeopleOutlineOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
