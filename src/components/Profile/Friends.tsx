@@ -1,8 +1,6 @@
-import { Box, ButtonBase, Card, CardActionArea, CardActions, CardContent, CardMedia, CircularProgress, Container, Grid, ImageList, ImageListItem, ImageListItemBar, Link, Paper, Typography } from "@mui/material";
-import { UserProps } from "../../App";
+import { Box, Card, CardActionArea, CardActions, CardMedia, CircularProgress, Grid, Link, Paper, Typography } from "@mui/material";
 import useFriends from "../../hooks/useFriends";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 interface FriendsProps {
   user: any,
