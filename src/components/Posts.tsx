@@ -18,7 +18,7 @@ const Posts = ({ user, useQuery }: { user: any, useQuery: any }) => {
   const { isLoading, error, data, refetch, hasNextPage, fetchNextPage } = useQuery(user._id);
   const { ref, inView } = useInView();
   const [posts, setPosts] = useState<PostProps[]>([]);
-  const loggedInUser = useRouteLoaderData('root');
+  const loggedInUser = useRouteLoaderData('root') as UserProps;
 
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();

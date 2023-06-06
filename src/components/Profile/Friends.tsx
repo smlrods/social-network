@@ -1,9 +1,21 @@
 import { Box, Card, CardActionArea, CardActions, CardMedia, CircularProgress, Grid, Link, Paper, Typography } from "@mui/material";
 import useFriends from "../../hooks/useFriends";
 import { useNavigate } from "react-router-dom";
+import { UserProps } from "../../App";
 
 interface FriendsProps {
   user: any,
+}
+
+interface FriendProps extends UserProps {
+  _id: string
+}
+
+interface RequestProps {
+  user: string,
+  friend: FriendProps,
+  status: string,
+  _id: string,
 }
 
 const Friends = ({ user }: FriendsProps) => {
@@ -21,7 +33,7 @@ const Friends = ({ user }: FriendsProps) => {
         </Box>) :
         data.friends.length ?
           (<Grid container columns={3} spacing={1}>
-            {data.friends.map((request, index) => (
+            {data.friends.map((request: RequestProps, index: number) => (
               <Grid item xs={1} key={request.friend._id + index}>
                 <Card>
                   <CardActionArea onClick={() => navigate(`/profile/${request.friend._id}`)}>

@@ -10,12 +10,8 @@ import Comments from './Comments';
 import { decode } from 'html-entities';
 import { useNavigate } from 'react-router-dom';
 
-interface AuthorProps extends UserProps {
-  _id: string
-}
-
 interface PostProps {
-  author: AuthorProps,
+  author: UserProps,
   body: string,
   imageURL?: string,
   postid: string,

@@ -10,9 +10,10 @@ import api from "../../api";
 import { useEffect, useState } from "react";
 import CheckIcon from '@mui/icons-material/Check';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import { UserProps } from "../../App";
 
 const Header = ({ user }: { user: any }) => {
-  const loggedInUser = useRouteLoaderData('root');
+  const loggedInUser = useRouteLoaderData('root') as UserProps;
   const { isLoading, data, refetch } = useRequestHeader(user._id);
   const [request, setRequest] = useState<string>();
   const [btnReq, setBtnReq] = useState<{ msg: string, icon: any }>();

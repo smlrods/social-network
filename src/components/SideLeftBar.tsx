@@ -4,8 +4,9 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import StoreIcon from '@mui/icons-material/Store';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useNavigate } from "react-router-dom";
+import { UserProps } from "../App";
 
-const SideLeftBar = ({ user }: { user: unknown }) => {
+const SideLeftBar = ({ user }: { user: UserProps }) => {
   const navigate = useNavigate();
   return (
     <Grid item xs={3}>

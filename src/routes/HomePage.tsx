@@ -4,9 +4,10 @@ import SideLeftBar from "../components/SideLeftBar";
 import SideRightBar from "../components/SideRightBar";
 import Posts from "../components/Posts";
 import usePosts from "../hooks/usePosts";
+import { UserProps } from "../App";
 
 const HomePage = () => {
-  const user = useOutletContext();
+  const user = useOutletContext() as UserProps;
 
   return (
     <Container sx={{ marginY: '50px' }}>

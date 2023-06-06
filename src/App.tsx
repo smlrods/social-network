@@ -41,7 +41,7 @@ const theme = createTheme({
 
 
 function App() {
-  const user = useLoaderData();
+  const user = useLoaderData() as UserProps;
 
   return (
     <Box minHeight={'100vh'}

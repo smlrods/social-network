@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import PersonSearchOutlinedIcon from '@mui/icons-material/PersonSearchOutlined';
 
-export default function Appbar({ user }: { user: UserProps | unknown | null }) {
+export default function Appbar({ user }: { user: UserProps | null }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
     >
       <MenuItem onClick={() => {
         handleMenuClose();
-        navigate(`/profile/${user._id}`);
+        if (user) navigate(`/profile/${user._id}`);
       }}>
         <ListItemIcon>
           <AccountCircleOutlinedIcon fontSize='small' />

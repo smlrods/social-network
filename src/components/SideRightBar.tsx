@@ -107,7 +107,7 @@ const NoMoreToShow = ({ message }: { message: string }) => {
 }
 
 const Contacts = () => {
-  const user = useRouteLoaderData('root');
+  const user = useRouteLoaderData('root') as UserProps;
   const navigate = useNavigate();
   const { isLoading, error, data } = useFriends(user._id);
 
