@@ -5,8 +5,8 @@ const getRequests = async () => {
   return data;
 }
 
-const updateRequest = async (requestid: string) => {
-  const { data } = await axiosInstance.put(`/requests/${requestid}`);
+const updateRequest = async (requestid: string, status = 'accepted') => {
+  const { data } = await axiosInstance.put(`/requests/${requestid}`, { status });
   return data;
 }
 
