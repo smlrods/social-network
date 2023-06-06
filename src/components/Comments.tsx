@@ -3,7 +3,7 @@ import useComments from "../hooks/useComments";
 import Comment from "./Comment";
 import { useMutation } from "@tanstack/react-query";
 import api from "../api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import { UserProps } from "../App";
 
