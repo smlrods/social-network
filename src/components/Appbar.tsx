@@ -111,11 +111,13 @@ export default function Appbar({ user }: { user: UserProps | unknown | null }) {
           >
             Social Network
           </Typography>
-          <Tooltip title='Find Users'>
-            <IconButton onClick={() => navigate('/users')} sx={{ marginLeft: 1 }}>
-              <PersonSearchOutlinedIcon sx={{ color: 'white' }} />
-            </IconButton>
-          </Tooltip>
+          {user ?
+            <Tooltip title='Find Users'>
+              <IconButton onClick={() => navigate('/users')} sx={{ marginLeft: 1 }}>
+                <PersonSearchOutlinedIcon sx={{ color: 'white' }} />
+              </IconButton>
+            </Tooltip> : null
+          }
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
             {user ?
