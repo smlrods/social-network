@@ -18,6 +18,8 @@ interface RequestProps {
   _id: string,
 }
 
+const noImage = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
+
 const Friends = ({ user }: FriendsProps) => {
   const { isLoading, error, data } = useFriends(user._id);
   const navigate = useNavigate();
@@ -40,7 +42,11 @@ const Friends = ({ user }: FriendsProps) => {
                     <CardMedia
                       component='img'
                       height='auto'
-                      image={request.friend.profile_image}
+                      image={
+                        request.friend.profile_image ?
+                          request.friend.profile_image :
+                          noImage
+                      }
                       alt='profile image'
                     />
                   </CardActionArea>
