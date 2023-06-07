@@ -117,7 +117,7 @@ const Header = ({ user }: { user: any }) => {
             src={user.profile_image}
             sx={{
               width: '200px',
-              height: 'auto',
+              height: '200px',
               border: '8px solid white',
             }}
           />
