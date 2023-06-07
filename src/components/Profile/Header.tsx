@@ -93,7 +93,7 @@ const Header = ({ user }: { user: any }) => {
       <Box
         sx={{
           height: '40vh',
-          backgroundImage: 'url(https://w.wallhaven.cc/full/l3/wallhaven-l3xk6q.jpg)',
+          backgroundColor: '#bdbdbd',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
